@@ -7,23 +7,26 @@ const { hideBin } = require('yargs/helpers')
 
 const argv = yargs(hideBin(process.argv)).argv
 
-// const width = argv.width || 405
-// const height = argv.height || 10
-// const url = argv.url || 'http://localhost:80'
+
+const url = argv.url || 'http://localhost:80'
+const width = +(argv.width || 800)
+const height = +(argv.height || 600)
 
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    // width: 800,
-    // height: 600,
+    width ,
+    height ,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }, 
-    // frame: false,
-    // resizable: false,
-    // skipTaskbar: true,
-    // show: false,
-    ...argv.win
+    frame: !(argv.frame==='false'),
+    resizable: !(argv.resizable==='false'),
+    skipTaskbar: (argv.skipTaskbar==='true'),
+    show: !(argv.show==='false'),
+
+    // TODO: handle all the other options
+    // ...argv.win
   })
 
   // and load the index.html of the app.
@@ -33,7 +36,7 @@ function createWindow () {
     mainWindow.show();
   });
 
-  mainWindow.setSize(400, 10);
+  mainWindow.setSize(width, height);
 
   // mainWindow.webContents.openDevTools()
   // Open the DevTools.
