@@ -1,0 +1,26 @@
+{
+  "name": "electron-iframe",
+  "version": "0.0.1",
+  "description": "An iframe app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "build": "electron-packager ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick"
+  ],
+  "author": "KnownRock",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^13.2.1",
+    "electron-builder": "^22.11.7",
+    "electron-packager": "^15.3.0"
+  },
+  "dependencies": {
+    "yargs": "^17.1.1"
+  }
+}
